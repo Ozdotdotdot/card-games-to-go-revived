@@ -1,10 +1,4 @@
-# The original executables and their decompiled output stay local.
-# The game art, sounds and help pages are bundled in web/assets/.
-disc/
-extracted/
-analysis/
-
-native/assets/
-
+# Build outputs (make in native/ regenerates these)
 native/klondike
 native/test_rules
+native/assets/

@@ -17,9 +17,10 @@ and Ghidra. The notes, with function addresses, are in [FINDINGS.md](FINDINGS.md
 | Hearts | The full opponent AI: passing, flushing out the Q♠, safe leads, ducking, moon detection and blocking — and that **Hard mode peeks at your hand** |
 | Spades | The complete bidding algorithm, including when it bids nil; card play follows the original's structure |
 
-The original card art, sounds and help pages are bundled in `web/assets/` so the games are
-playable straight from a clone. The original executables and their decompiled output are not
-included.
+Everything is in the repository: the original disc files (`disc/`), the unpacked executables and
+resources (`extracted/`), Ghidra's full decompilation of all six games and REA's output
+(`analysis/`), and the bundled art, sounds and help pages (`web/assets/`) so the games play
+straight from a clone.
 
 ## Play it
 
@@ -47,6 +48,9 @@ cd native && make && ./klondike     # make test runs the rules tests
 ## Layout
 
 ```
+disc/           the original CD contents (Palm .prc, Pocket PC ARM/MIPS/SH3 .CAB, manual)
+extracted/      the ARM executables and their resources, unpacked
+analysis/       Ghidra decompilation of each game (*.c), PE imports, REA analysis output
 web/            browser version (vanilla JS, no build step)
   js/engine.js  sprites with the original colour keys, MS rand(), the original shuffle
   js/*.js       one module per game; tricks.js is the shared Hearts/Spades table

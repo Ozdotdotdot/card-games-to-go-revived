@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Htn-Help" Content="GolfSolitaire.htm#Main_Contents">
+<title>Golf Solitaire Help</title>
+<keyword value="Golf Solitaire" title="Golf Solitaire Help" href="GolfSolitaire.htm#Main_Contents">
+</HEAD>
+<BODY BGCOLOR=#ffffff TEXT=#000000>
+<!-- PegHelp -->
+
+<p><a name="Main_Contents"></a><b>Golf Solitaire Help</b></p>
+<a href="GolfSolitaire.htm#overview">Overview</a><br>
+<menu>
+<a href="GolfSolitaire.htm#Playing">Playing the Game</a><br>
+<a href="GolfSolitaire.htm#Options">Game Options</a><br>
+<a href="GolfSolitaire.htm#Updates">Program Updates Online</a><br>
+</menu>
+<p><font size=1>(c) Copyright 2002, Don Turner, All rights reserved.</font></p>
+
+<br clear=all>
+<!-- PegHelp -->
+<a name="overview"></a>
+<font size=3><b>Overview</b></font></p>
+Golf solitaire is played with a regular deck of cards dealt to seven piles with 5 cards face up in each pile.&nbsp; 
+The total number of cards dealt is 35 leaving 17 cards in the stock.&nbsp; The object of the game is to move all of 
+the cards from the tableau piles to the discard pile.&nbsp; Cards can only be moved one at a time and must be in 
+ascending or descending sequence with the top-most card of the discard pile ( regardless of suit ).&nbsp; The cards 
+are valued Ace low to King high.&nbsp; The sequence does not end at Ace and does not wrap to King.&nbsp; Therefore, 
+it is only legal to move a '2' on to an Ace.&nbsp; Also, an Ace can be moved on to a '2'.&nbsp; A King can be played 
+on a Queen but, the sequence ends there -- meaning a Queen cannot be played on a King.<p>   
+As a program option, you can allow a Queen to be moved to a King by checking the checkbox,'Options : Customize' : 
+'Allow Queen on King' .
+<p>
+<b>See also :</b>
+<br>&nbsp;&nbsp; <a href="GolfSolitaire.htm#Options">Game Options</a>
+<br clear=all>
+
+<P>&nbsp;<!-- PegHelp --><hr><!-- *****Topic Break**** -->
+<p><a name="Playing"></a><font size=3><b>Playing</b></font></p>
+Play begins by either tapping the stock to reveal the first card in the deck or any of the top most cards in the tableau 
+piles to move that card to the discard pile.&nbsp; The object of the game is to move all of the cards from the tableau 
+piles to the discard pile.&nbsp; Cards can only be moved one at a time and must be in ascending or descending sequence 
+with the top-most card of the discard pile ( regardless of suit ).&nbsp; The cards are valued Ace low to King high.&nbsp; 
+The sequence does not end at Ace and does not wrap to King.&nbsp; Therefore, it is only legal to move a '2' on to an Ace.
+&nbsp; Also, an Ace can be moved on to a '2'.&nbsp; A King can be played on a Queen but, the sequence ends there -- meaning 
+a Queen cannot be played on a King.<p>   
+Try to move as many cards from the tableau piles in ascending and 
+descending sequence to the discard pile before dealing the next card.&nbsp; Your score is the number of cards left in the 
+tableau piles after running through the hand.&nbsp; As with golf, the lower your score the better.
+<p>
+<b>See also :</b>
+<br>&nbsp;&nbsp; <a href="GolfSolitaire.htm#Options">Game Options</a>
+<br clear=all>
+
+<P>&nbsp;<!-- PegHelp --><hr><!-- *****Topic Break**** -->
+<p><a name="Options"></a><font size=3><b>Game Options</b></font></p>
+From the menu, select 'Options : Customize' to set the game's difficulty and appearance.<p>
+Select any of the 5 card styles or the '?' card to have the card style randomly selected before each game.&nbsp; 
+<p>
+When 'Allow Queen on King' is checked, you are allowed to play a Queen on a King.&nbsp; This is a variation of the rules 
+which ends the sequence at King.
+
+<P>&nbsp;<!-- PegHelp --><hr><!-- *****Topic Break**** -->
+<p><a name="Updates"></a>
+<font size=3><b>Program Updates Online</b></font></p>
+To access product patches and updates online, please visit our website, <a href="http://www.FixedIt.com">www.FixedIt.com</a>
+
+<P>&nbsp;<!-- PegHelp --><hr><!-- *****Topic Break**** -->
+</body>
+</HTML>
