@@ -62,7 +62,7 @@ export default class Spades extends TrickGame {
     else {
       const suggested = [null, null, H.count(this.hands[YOU], SPADES), this.faceCards(this.hands[YOU]), H.count(this.hands[YOU], DIAMONDS)][this.opts.bidding];
       const others = this.order.filter((p) => p !== YOU).map((p) => `${SEAT_NAME[p]} ${this.bidText(p)}`).join(', ');
-      const buttons = [{ label: 'Nil', value: 0 }, ...Array.from({ length: 13 }, (_, i) => ({ label: String(i + 1), value: i + 1 }))];
+      const buttons = [{ label: 'Nil', value: 0 }, ...Array.from({ length: this.hands[YOU].length }, (_, i) => ({ label: String(i + 1), value: i + 1 }))];
       this.bids[YOU] = await this.prompt('Your bid', `${others}.${suggested != null ? ` Suggested: ${suggested}.` : ''} How many tricks will you take?`, buttons);
     }
     this.turn = this.opts.lead2c && this.mode !== 'partners' ? this.twoClubLeader() : this.next(this.dealer);
@@ -270,7 +270,7 @@ export default class Spades extends TrickGame {
 
   scoreLine(seat) {
     if (!this.bids) return '';
-    return `${this.bidText(seat)}/${this.tricksWon?.[seat] ?? 0}`;
+    return `${{ Nil: 'N', BN: 'B' }[this.bidText(seat)] ?? this.bidText(seat)}/${this.tricksWon?.[seat] ?? 0}`;
   }
 
   draw(ctx) {

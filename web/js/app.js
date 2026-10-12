@@ -53,6 +53,7 @@ function prompt(title, text, buttons) {
     el.textContent = b.label;
     return el;
   }));
+  dlg.oncancel = (e) => e.preventDefault();   // Escape must not pick an answer (e.g. a 13 bid)
   return new Promise((resolve) => {
     dlg.onclose = () => {
       const hit = buttons.find((b) => String(b.value) === dlg.returnValue);
@@ -133,7 +134,13 @@ soundBtn.onclick = () => {
 };
 
 document.getElementById('help').onclick = () => {
-  document.getElementById('help-frame').src = `assets/help/${GameClass.id}.htm`;
+  // Created on demand: an empty sandboxed frame logs a warning on every page load.
+  const frame = document.createElement('iframe');
+  frame.id = 'help-frame';
+  frame.title = 'Help';
+  frame.sandbox = '';
+  frame.src = `assets/help/${GameClass.id}.htm`;
+  document.getElementById('help-slot').replaceChildren(frame);
   document.getElementById('help-dialog').showModal();
 };
 
@@ -190,7 +197,13 @@ canvas.addEventListener('pointerdown', (e) => {
   lastDown = dbl ? { t: 0, x: -99, y: -99 } : { t: e.timeStamp, x, y };
   game.down(x, y, dbl);
 });
-canvas.addEventListener('pointermove', (e) => { if (game) game.move?.(...toLogical(e)); });
+canvas.addEventListener('pointermove', (e) => {
+  if (!game) return;
+  const [x, y] = toLogical(e);
+  // A press that turns into a drag must not count toward a double-click.
+  if (e.buttons && Math.hypot(x - lastDown.x, y - lastDown.y) >= 6) lastDown = { t: 0, x: -99, y: -99 };
+  game.move?.(x, y);
+});
 canvas.addEventListener('pointerup', (e) => { if (game) game.up?.(...toLogical(e)); });
 canvas.addEventListener('pointercancel', (e) => { if (game) game.up?.(...toLogical(e)); });
 
@@ -208,6 +221,9 @@ function frame(now) {
   }
   requestAnimationFrame(frame);
 }
+
+// Inspection handle for automated tests and the curious: cardGames.game is the running game.
+window.cardGames = { get game() { return game; } };
 
 addEventListener('resize', fit);
 const initial = GAMES.find((G) => G.id === (new URLSearchParams(location.search).get('game') || store('last-game'))) || Klondike;

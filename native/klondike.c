@@ -221,6 +221,7 @@ static Where drop_target(int x, int y) {
 static bool try_move(Game *g, Where src, int from_idx, Where dst) {
     Pile *s = pile_of(g, src), *d = pile_of(g, dst);
     if (!s || !d || s == d || from_idx < 0) return false;
+    if (src.kind == P_FOUND && dst.kind == P_FOUND) return false;
     int count = s->n - from_idx;
     Card base = s->c[from_idx];
     if (dst.kind == P_FOUND) {

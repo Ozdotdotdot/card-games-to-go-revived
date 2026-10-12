@@ -49,7 +49,8 @@ export default class Hearts extends TrickGame {
     this.heartsBroken = false;
     this.qsPlayed = false;
     this.jdPlayed = false;
-    this.moon = [0, 1, 2, 3].map((p) => p !== YOU && this.strongHand(this.hands[p]));
+    this.wonJD = -1;
+    this.moon =[0, 1, 2, 3].map((p) => p !== YOU && this.strongHand(this.hands[p]));
     const cycle = PASS_CYCLES[this.opts.pass];
     this.passDir = cycle[this.handNo % cycle.length];
     if (this.passDir === 'H') this.beginPlay();
@@ -151,14 +152,14 @@ export default class Hearts extends TrickGame {
     if (shooter !== undefined) {
       const sun = this.opts.sun && this.tricksWon[shooter] === 13;
       const value = sun ? 52 : 26;
-      const jdAdj = this.opts.jd && this.wonJD === shooter ? -10 : 0;
+      const jd = (p) => (this.opts.jd && this.wonJD === p ? -10 : 0);   // the J♦ still counts for whoever took it
       add = [0, 0, 0, 0];
       let addToOthers = true;
       if (shooter === YOU) {
         addToOthers = await this.prompt('Congratulations !', `You shot the ${sun ? 'sun' : 'moon'} and earned ${value} points. Select how to use your points:`,
           [{ label: 'Deduct from Your Score', value: false }, { label: 'Add to Opponent Scores', value: true }]);
       } else this.toast(`${SEAT_NAME[shooter]} shot the ${sun ? 'sun' : 'moon'}!`, 2500);
-      for (const p of this.order) add[p] = p === shooter ? (addToOthers ? 0 : -value) + jdAdj : addToOthers ? value : 0;
+      for (const p of this.order) add[p] = (p === shooter ? (addToOthers ? 0 : -value) : addToOthers ? value : 0) + jd(p);
     }
     for (const p of this.order) this.scores[p] += add[p];
     const table = this.order.map((p) => `${SEAT_NAME[p]}: ${add[p] >= 0 ? '+' : ''}${add[p]} → ${this.scores[p]}`).join('\n');
@@ -345,7 +346,7 @@ export default class Hearts extends TrickGame {
     if (this.phase === 'play' && this.turn === YOU && c && this.legal(YOU, c, true)) this.play(YOU, c);
   }
 
-  scoreLine(seat) { return `${this.points?.[seat] ?? 0}  (${this.scores[seat]})`; }
+  scoreLine(seat) { return String(this.points?.[seat] ?? 0); }   // current hand, as the original showed
 
   draw(ctx) {
     this.drawTable(ctx);

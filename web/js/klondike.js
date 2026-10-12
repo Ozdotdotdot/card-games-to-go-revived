@@ -107,6 +107,7 @@ export default class Klondike {
   tryMove(src, idx, dst) {
     const s = this.pile(src), d = this.pile(dst);
     if (!s || !d || s === d || idx < 0) return false;
+    if (src.kind === 'found' && dst.kind === 'found') return false;
     const count = s.length - idx, base = s[idx];
     if (dst.kind === 'found') {
       if (count !== 1 || !this.foundAccepts(d, base)) return false;
