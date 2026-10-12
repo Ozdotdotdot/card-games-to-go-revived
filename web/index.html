@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1d3a1d">
+  <title>Card Games To Go</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav id="games"></nav>
+    <div id="actions">
+      <button id="new" title="New game (N)">New</button>
+      <button id="undo" title="Undo (U)">Undo</button>
+      <button id="opts" title="Options">Options</button>
+      <button id="help" title="Original help">Help</button>
+      <button id="sound" title="Sound">♪</button>
+    </div>
+  </header>
+  <main>
+    <canvas id="screen" width="240" height="320"></canvas>
+    <div id="toast" hidden></div>
+  </main>
+
+  <dialog id="options-dialog">
+    <form method="dialog">
+      <h2 id="options-title">Options</h2>
+      <div id="options-fields"></div>
+      <menu><button value="cancel">Cancel</button><button value="ok" id="options-ok">OK</button></menu>
+    </form>
+  </dialog>
+
+  <dialog id="prompt-dialog">
+    <form method="dialog">
+      <h2 id="prompt-title"></h2>
+      <p id="prompt-text"></p>
+      <div id="prompt-buttons"></div>
+    </form>
+  </dialog>
+
+  <dialog id="help-dialog">
+    <form method="dialog">
+      <iframe id="help-frame" title="Help" sandbox></iframe>
+      <menu><button>Close</button></menu>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

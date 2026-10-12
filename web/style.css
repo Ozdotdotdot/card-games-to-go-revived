@@ -1,0 +1,107 @@
+:root {
+  --bg: #1d3a1d;
+  --bar: #c0c0c0;
+  --bar-text: #000;
+  --bar-hi: #fff;
+  --bar-lo: #808080;
+  --active: #000080;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  font: 13px Tahoma, Verdana, "Segoe UI", system-ui, sans-serif;
+  color: var(--bar-text);
+  overscroll-behavior: none;
+}
+
+body { display: flex; flex-direction: column; }
+
+header {
+  background: var(--bar);
+  border-bottom: 1px solid var(--bar-lo);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  justify-content: center;
+  padding: 4px 8px calc(4px);
+  padding-top: max(4px, env(safe-area-inset-top));
+}
+
+nav, #actions { display: flex; flex-wrap: wrap; gap: 2px; }
+
+button {
+  font: inherit;
+  background: var(--bar);
+  color: var(--bar-text);
+  border: 1px solid;
+  border-color: var(--bar-hi) var(--bar-lo) var(--bar-lo) var(--bar-hi);
+  padding: 3px 8px;
+  min-height: 28px;
+  cursor: pointer;
+}
+button:active { border-color: var(--bar-lo) var(--bar-hi) var(--bar-hi) var(--bar-lo); }
+nav button[aria-pressed="true"] { background: var(--active); color: #fff; }
+#sound[aria-pressed="false"] { text-decoration: line-through; }
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  position: relative;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+  box-shadow: 0 0 0 1px #000, 0 4px 24px rgba(0, 0, 0, .5);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#toast {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffe1;
+  border: 1px solid #000;
+  padding: 6px 12px;
+  max-width: 90%;
+  text-align: center;
+  pointer-events: none;
+}
+
+dialog {
+  background: var(--bar);
+  border: 2px solid;
+  border-color: var(--bar-hi) var(--bar-lo) var(--bar-lo) var(--bar-hi);
+  padding: 0;
+  max-width: min(420px, 94vw);
+}
+dialog::backdrop { background: rgba(0, 0, 0, .4); }
+dialog form { padding: 0 12px 12px; }
+dialog h2 {
+  margin: 0 -12px 10px;
+  padding: 4px 8px;
+  font-size: 13px;
+  background: var(--active);
+  color: #fff;
+}
+dialog menu { display: flex; justify-content: flex-end; gap: 6px; padding: 0; margin: 12px 0 0; }
+
+.field { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 6px 0; }
+.field select { font: inherit; }
+
+#prompt-buttons { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+#prompt-buttons button { min-width: 40px; }
+
+#help-dialog { width: min(560px, 94vw); }
+#help-frame { width: 100%; height: min(70vh, 600px); border: 1px solid var(--bar-lo); background: #fff; margin-top: 12px; }

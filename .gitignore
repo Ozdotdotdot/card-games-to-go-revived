@@ -1,0 +1,10 @@
+# Everything that comes from the original disc stays local: art, sounds, help pages,
+# the binaries themselves and their decompiled output.
+disc/
+extracted/
+analysis/
+web/assets/
+native/assets/
+
+native/klondike
+native/test_rules
