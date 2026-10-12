@@ -1,9 +1,9 @@
-# Everything that comes from the original disc stays local: art, sounds, help pages,
-# the binaries themselves and their decompiled output.
+# The original executables and their decompiled output stay local.
+# The game art, sounds and help pages are bundled in web/assets/.
 disc/
 extracted/
 analysis/
-web/assets/
+
 native/assets/
 
 native/klondike
