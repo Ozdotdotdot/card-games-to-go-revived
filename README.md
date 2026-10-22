@@ -8,6 +8,20 @@ The games' rules, layouts, sprite composition and computer opponents were recove
 decompiling the original Windows CE ARM executables with [REA](https://github.com/morluto/rea)
 and Ghidra. The notes, with function addresses, are in [FINDINGS.md](FINDINGS.md).
 
+**Play it at [2002solitaire.ozairkhan.com](https://2002solitaire.ozairkhan.com).**
+
+<p align="center">
+  <img src="screenshots/cd.jpg" alt="The original 2002 CD case, found at a garage sale" width="600"><br>
+  <em>The CD, found at a garage sale</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/hearts.png" alt="Hearts in the browser" width="300">
+  &nbsp;
+  <img src="screenshots/war.png" alt="War in the browser, mid-war" width="300"><br>
+  <em>Hearts and War, running in the browser</em>
+</p>
+
 | Game | What came out of the binary |
 |---|---|
 | Klondike | Shuffle, column-by-column deal, the "first build locks same-suit or alternating colours" rule, one-level undo snapshot, a King-on-Ace quirk caused by Ace being stored as 14 |
